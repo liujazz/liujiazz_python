@@ -53,7 +53,6 @@ while True:
     "page": page,
     "type": pt_key
  }
-    print(url)
     data = urllib.parse.urlencode(formdata).encode(encoding="utf-8")
     request = urllib.request.Request(url, data = data, headers =headers )
     response = urllib.request.urlopen(request).read().decode("utf-8")
