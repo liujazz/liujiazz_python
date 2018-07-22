@@ -59,24 +59,22 @@ while True:
     data_list = json.loads(response)['data']
 
 # 初始化序号，url列表和音乐名列表
-    XH = 0
     music_url = []
     music_name = []
     print("**************************************************\n")
-    for items in data_list:
+    #使用enumerate() 函数返回索引迭代
+    for XH, items in enumerate(data_list):
         title = items['title']
         author = items['author']
         each_url = items['url']
         music_url.append(each_url)
         music_name.append(title + "-" + author)
-        XH += 1
         #里面的(X-len(**))是为了让排版更整齐，但是不知道为什么有的没用。。
-        print(str(XH)+ " "*(6-len(str(XH)))+title.strip() + "-"*(30-len(title)) + author.strip())
+        print(str(XH+1)+ " "*(6-len(str(XH)))+title.strip() + "-"*(30-len(title)) + author.strip())
     X = input("\n是否选择下一页?(按Y下一页)")
     if X == "Y":
         page += 1
         #重新初始化
-        XH = 0
         music_url = []
         music_name = []
     else:
@@ -98,8 +96,3 @@ while True:
     else:
         print("谢谢使用！")
         break
-
-
-
-
-
